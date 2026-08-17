@@ -2,6 +2,7 @@ const { slugify } = require('./slugify');
 const { createLogger, LEVELS } = require('./logger');
 const { retry, sleep } = require('./retry');
 const { deepMerge, isObject } = require('./merge');
+const { getEnv, requireEnv, parseEnvInt, parseEnvBool } = require('./env');
 
 module.exports = {
   slugify,
@@ -11,4 +12,8 @@ module.exports = {
   sleep,
   deepMerge,
   isObject,
+  getEnv,
+  requireEnv,
+  parseEnvInt,
+  parseEnvBool,
 };
