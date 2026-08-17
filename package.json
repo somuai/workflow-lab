@@ -4,7 +4,7 @@
   "description": "Lightweight JavaScript micro-utilities library for workflow practice and CI validation",
   "main": "src/index.js",
   "scripts": {
-    "test": "node --test test/**/*.test.js"
+    "test": "node --test"
   },
   "keywords": [
     "utilities",
