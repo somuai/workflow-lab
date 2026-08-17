@@ -14,9 +14,21 @@ test('slugify: strips diacritics and accents', () => {
 
 test('slugify: supports custom separator', () => {
   assert.equal(slugify('Hello World', { separator: '_' }), 'hello_world');
+  assert.equal(slugify('Multiple words here', { separator: '.' }), 'multiple.words.here');
 });
 
 test('slugify: handles edge cases and invalid input', () => {
   assert.equal(slugify(null), '');
+  assert.equal(slugify(undefined), '');
   assert.equal(slugify('   --- leading and trailing ---  '), 'leading-and-trailing');
+  assert.equal(slugify('$$$ Special @ Characters !!!'), 'special-characters');
+});
+
+test('slugify: high throughput benchmark assertion', () => {
+  const start = Date.now();
+  for (let i = 0; i < 5000; i++) {
+    slugify('Benchmark performance string execution testing with diacritics: Naïve Café #123');
+  }
+  const duration = Date.now() - start;
+  assert.ok(duration < 500, `Expected 5000 slugifications in < 500ms, took ${duration}ms`);
 });

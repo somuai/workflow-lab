@@ -1,3 +1,26 @@
+const DIACRITICS_REGEX = /[\u0300-\u036f]/g;
+const NON_ALPHANUMERIC_REGEX = /[^a-zA-Z0-9\s-_]/g;
+const WHITESPACE_UNDERSCORE_REGEX = /[\s-_]+/g;
+
+const ESCAPE_REGEX_SPECIAL = /[.*+?^${}()|[\]\\]/g;
+const REGEX_CACHE = new Map();
+
+function escapeRegex(string) {
+  return string.replace(ESCAPE_REGEX_SPECIAL, '\\$&');
+}
+
+function getTrimPattern(separator) {
+  let pattern = REGEX_CACHE.get(separator);
+  if (!pattern) {
+    const escaped = escapeRegex(separator);
+    pattern = new RegExp(`^${escaped}+|${escaped}+$`, 'g');
+    if (REGEX_CACHE.size < 50) {
+      REGEX_CACHE.set(separator, pattern);
+    }
+  }
+  return pattern;
+}
+
 function slugify(input, options = {}) {
   if (typeof input !== 'string') {
     return '';
@@ -8,7 +31,7 @@ function slugify(input, options = {}) {
 
   let str = input
     .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
+    .replace(DIACRITICS_REGEX, '')
     .trim();
 
   if (lowercase) {
@@ -16,15 +39,11 @@ function slugify(input, options = {}) {
   }
 
   str = str
-    .replace(/[^a-zA-Z0-9\s-_]/g, '')
-    .replace(/[\s-_]+/g, separator)
-    .replace(new RegExp(`^${escapeRegex(separator)}+|${escapeRegex(separator)}+$`, 'g'), '');
+    .replace(NON_ALPHANUMERIC_REGEX, '')
+    .replace(WHITESPACE_UNDERSCORE_REGEX, separator)
+    .replace(getTrimPattern(separator), '');
 
   return str;
 }
 
-function escapeRegex(string) {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-module.exports = { slugify };
+module.exports = { slugify, escapeRegex };
