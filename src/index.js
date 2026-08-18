@@ -3,6 +3,7 @@ const { createLogger, LEVELS } = require('./logger');
 const { retry, sleep } = require('./retry');
 const { deepMerge, isObject } = require('./merge');
 const { getEnv, requireEnv, parseEnvInt, parseEnvBool } = require('./env');
+const { generateId, generateUuid } = require('./id');
 
 module.exports = {
   slugify,
@@ -16,4 +17,6 @@ module.exports = {
   requireEnv,
   parseEnvInt,
   parseEnvBool,
+  generateId,
+  generateUuid,
 };
