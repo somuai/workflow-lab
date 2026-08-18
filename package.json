@@ -1,6 +1,6 @@
 {
   "name": "workflow-lab",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Production-grade JavaScript micro-utilities library for testing GitHub Actions CI/CD workflows and automated releases",
   "main": "src/index.js",
   "scripts": {
@@ -12,9 +12,10 @@
     "retry",
     "merge",
     "logger",
-    "env"
+    "env",
+    "id"
   ],
-  "author": "Soumyajit Ghosh <somuai>",
+  "author": "Soumyajit Ghosh <jobsoumyajit6124@gmail.com>",
   "license": "MIT",
   "engines": {
     "node": ">=18.0.0"
