@@ -4,6 +4,7 @@ const { retry, sleep } = require('./retry');
 const { deepMerge, isObject } = require('./merge');
 const { getEnv, requireEnv, parseEnvInt, parseEnvBool } = require('./env');
 const { generateId, generateUuid } = require('./id');
+const { formatBytes, formatDuration } = require('./format');
 
 module.exports = {
   slugify,
@@ -19,4 +20,6 @@ module.exports = {
   parseEnvBool,
   generateId,
   generateUuid,
+  formatBytes,
+  formatDuration,
 };
