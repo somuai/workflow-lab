@@ -6,6 +6,7 @@ const { getEnv, requireEnv, parseEnvInt, parseEnvBool } = require('./env');
 const { generateId, generateUuid } = require('./id');
 const { formatBytes, formatDuration } = require('./format');
 const { getDeepKeys } = require('./keys');
+const { chunkArray } = require('./chunk');
 
 module.exports = {
   slugify,
@@ -24,4 +25,5 @@ module.exports = {
   formatBytes,
   formatDuration,
   getDeepKeys,
+  chunkArray,
 };
