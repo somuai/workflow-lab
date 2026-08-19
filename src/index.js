@@ -5,6 +5,7 @@ const { deepMerge, isObject } = require('./merge');
 const { getEnv, requireEnv, parseEnvInt, parseEnvBool } = require('./env');
 const { generateId, generateUuid } = require('./id');
 const { formatBytes, formatDuration } = require('./format');
+const { getDeepKeys } = require('./keys');
 
 module.exports = {
   slugify,
@@ -22,4 +23,5 @@ module.exports = {
   generateUuid,
   formatBytes,
   formatDuration,
+  getDeepKeys,
 };

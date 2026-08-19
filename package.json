@@ -1,6 +1,6 @@
 {
   "name": "workflow-lab",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Production-grade JavaScript micro-utilities library for testing GitHub Actions CI/CD workflows and automated releases",
   "main": "src/index.js",
   "scripts": {
@@ -14,7 +14,8 @@
     "logger",
     "env",
     "id",
-    "format"
+    "format",
+    "keys"
   ],
   "author": "Soumyajit Ghosh <jobsoumyajit6124@gmail.com>",
   "license": "MIT",
